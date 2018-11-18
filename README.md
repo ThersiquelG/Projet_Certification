@@ -16,7 +16,7 @@ Il pourra apporter un plus non négligeable sur les sites d'encyclopédies liés
 
 ### Developper une application client-serveur
 
-1. Maquetter une application (zooning/wireframe/mock up etc)
+1. Maquetter une application (zoning/wireframe/mock up etc)
 2. Concevoir une base de données (diagrammes)
 3. Mettre en place une base de données (MySQL + Jointures + CRUD)
 4. Developper une interface utilisateur (UI/UX) 
