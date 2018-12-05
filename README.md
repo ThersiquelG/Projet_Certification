@@ -2,7 +2,7 @@
 
 ## Contexte :
 
-Mon projet sera un outil destiné aux développeurs dans le milieu du jeux vidéo dans un premier temps, mais pourra être adapté en fonctions des besoins pour d'autres secteurs.
+Mon projet est un outil de calcul destinés aux joueurs d'un jeu donné, afin de pouvoir centraliser ces joueurs sur une seule et même plateforme afin qu'ils puissent effectuer les calculs des statistiques de leurs avatars couplés aux bonus des objets du jeu.
 
 
 
