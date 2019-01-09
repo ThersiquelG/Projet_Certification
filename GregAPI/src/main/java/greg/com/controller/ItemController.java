@@ -28,12 +28,12 @@ public class ItemController {
 	private ItemRepository repository;
 	
 	
-	@GetMapping("/item")
+	@GetMapping("/items")
 	List<Item> getAllItems(){
 		return repository.findAll();
 	}
 	
-	@GetMapping("/item/{id}")
+	@GetMapping("/items/{id}")
 	ResponseEntity<Item> getItemById(@PathVariable(value="id") long id) {
 	    Item item = repository.findOne(id);
 	    if(item == null) {
@@ -42,30 +42,31 @@ public class ItemController {
 	    return ResponseEntity.ok().body(item);
 	}
 	
-	@PostMapping("/item")
+	@PostMapping("/items")
 	Item addItem(@Valid @RequestBody Item item){
 		return repository.save(item);
 	}
 	
-	@PutMapping("/item/{id}")
+	@PutMapping("/items/{id}")
 	ResponseEntity<Item> updateItem(@PathVariable(value="id") long id, @Valid @RequestBody Item item){
 		Item itemToUpdate = repository.findOne(id);
 		if(itemToUpdate == null)
 			return ResponseEntity.notFound().build();
 		
-		// Update the mandatory attributes
+		
 		itemToUpdate.setItemName(item.getItemName());
 		itemToUpdate.setBonusHealth(item.getBonusHealth());
 		itemToUpdate.setBonusMana(item.getBonusMana());
 		itemToUpdate.setBonusArmor(item.getBonusArmor());
 		itemToUpdate.setBonusDamage(item.getBonusDamage());
-			
+		
+		
 		Item updatedItem = repository.save(itemToUpdate);
 		return ResponseEntity.ok(updatedItem);
 	}
 		
 
-	@DeleteMapping("/item/{id}")
+	@DeleteMapping("/items/{id}")
 	ResponseEntity<Item> deleteItem(@PathVariable(value="id") long id){
 		Item item = repository.findOne(id);
 		if(item == null)

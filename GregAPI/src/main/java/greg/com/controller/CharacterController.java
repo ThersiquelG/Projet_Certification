@@ -25,55 +25,58 @@ import greg.com.repository.CharacterRepository;
 public class CharacterController {
 	@Autowired
 	private CharacterRepository repository;
-	
-	
-	@GetMapping("/character")
+
+
+	@GetMapping("/characters")
 	List<Character> getAllCharacters(){
 		return repository.findAll();
 	}
-	
-	
-	@GetMapping("/character/{id}")
+
+
+	@GetMapping("/characters/{id}")
 	ResponseEntity<Character> getCharacterById(@PathVariable(value="id") long id) {
-	    Character character = repository.findOne(id);
-	    if(character == null) {
-	        return ResponseEntity.notFound().build();
-	    }
-	    return ResponseEntity.ok().body(character);
+		Character character = repository.findOne(id);
+		if(character == null) {
+			return ResponseEntity.notFound().build();
+		}
+		return ResponseEntity.ok().body(character);
 	}
+
 	
-	
-	@PostMapping("/character")
+	@PostMapping("/formCharacters")
 	Character addCharacter(@Valid @RequestBody Character character){
 		return repository.save(character);
 	}
-	
-	
-	@PutMapping("/character/{id}")
+
+
+	@PutMapping("/characters/{id}")
 	ResponseEntity<Character> updateCharacter(@PathVariable(value="id") long id, @Valid @RequestBody Character character){
 		Character characterToUpdate = repository.findOne(id);
 		if(characterToUpdate == null)
 			return ResponseEntity.notFound().build();
-		
-		// Update the mandatory attributes
-		characterToUpdate.setCharacterName(character.getCharacterName());
+
+
+		/*characterToUpdate.setCharacterName(character.getCharacterName());
 		characterToUpdate.setHealthPoints(character.getHealthPoints());
 		characterToUpdate.setManaPoints(character.getManaPoints());
 		characterToUpdate.setArmorPoints(character.getArmorPoints());
 		characterToUpdate.setDamagePoints(character.getDamagePoints());
-		
-		
+		*/
+
+
+	characterToUpdate = character;
+
 		Character updatedCharacter = repository.save(characterToUpdate);
 		return ResponseEntity.ok(updatedCharacter);
 	}
-	
-	
-	@DeleteMapping("/character/{id}")
+
+
+	@DeleteMapping("/characters/{id}")
 	ResponseEntity<Character> deleteCharacter(@PathVariable(value="id") long id){
 		Character character = repository.findOne(id);
 		if(character == null)
 			return ResponseEntity.notFound().build();
-		
+
 		repository.delete(character);
 		return ResponseEntity.ok().build();
 	}

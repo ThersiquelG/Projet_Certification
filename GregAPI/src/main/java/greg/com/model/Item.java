@@ -1,5 +1,6 @@
 package greg.com.model;
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,6 +18,7 @@ public class Item {
 	private int bonusMana;
 	private int bonusArmor;
 	private int bonusDamage;
+	  
 	public long getId() {
 		return id;
 	}
