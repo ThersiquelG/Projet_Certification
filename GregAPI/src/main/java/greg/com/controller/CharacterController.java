@@ -42,7 +42,7 @@ public class CharacterController {
 		return ResponseEntity.ok().body(character);
 	}
 
-	
+
 	@PostMapping("/formCharacters")
 	Character addCharacter(@Valid @RequestBody Character character){
 		return repository.save(character);
@@ -56,15 +56,9 @@ public class CharacterController {
 			return ResponseEntity.notFound().build();
 
 
-		/*characterToUpdate.setCharacterName(character.getCharacterName());
-		characterToUpdate.setHealthPoints(character.getHealthPoints());
-		characterToUpdate.setManaPoints(character.getManaPoints());
-		characterToUpdate.setArmorPoints(character.getArmorPoints());
-		characterToUpdate.setDamagePoints(character.getDamagePoints());
-		*/
 
 
-	characterToUpdate = character;
+		characterToUpdate = character;
 
 		Character updatedCharacter = repository.save(characterToUpdate);
 		return ResponseEntity.ok(updatedCharacter);
